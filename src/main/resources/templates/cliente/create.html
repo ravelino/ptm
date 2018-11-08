@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/cliente.js}"></script>
+</head>
+<body>
+	<div class="container" style="margin-top:20px;">
+		
+			<h3>Cadastro de Clientes</h3>
+	
+			<form action="#" th:action="@{/cliente/v1/create}" th:object="${clienteForm}" method="post">
+			  <div class="form-group">
+			    <label for="nome">Nome</label>
+			    <input th:field="*{nomeCliente}" type="text" class="form-control" id="nome" aria-describedby="Nome Cliente" placeholder="Nome Cliente">
+			    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomeCliente')}" th:errors="*{nomeCliente}"></div>
+			  </div>
+			  <div class="form-group">
+			    <label for="cpf">CPF</label>
+			    <input th:field="*{cpfCliente}" type="text" class="form-control" id="cpf" placeholder="CPF">
+			    <div th:if="${#fields.hasErrors('cpfCliente')}" class="alert alert-danger" role="alert" th:errors="*{cpfCliente}"></div>
+			  </div>
+			  <div class="form-group row">
+			  	<div class="col-12">
+				  	<label for="apolice">Apólice</label>
+				  	<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('codsCliente')}" th:errors="*{codsCliente}"></div>
+			  	</div>
+			  	<div class="col-4">
+				  	<select th:field="*{codsCliente}" multiple class="form-control" id="apolice">
+				      <option th:value="xpto1" th:text="xpto1"></option>
+				      <option th:value="xpto2" th:text="xpto2"></option>
+				      <option th:value="xpto3" th:text="xpto3"></option>
+				      <option th:value="xpto4" th:text="xpto4"></option>
+				      <option th:value="xpto5" th:text="xpto5"></option>
+				    </select>
+				     
+				</div>
+			  </div>
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+	</div>
+</body>
+</html>
